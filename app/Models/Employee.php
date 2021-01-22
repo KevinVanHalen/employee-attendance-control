@@ -21,6 +21,6 @@ class Employee extends Model
 
     public function workingDays()
     {
-        return $this->hasMany(WorkingDay::class);
+        return $this->hasOne(WorkingDay::class);
     }
 }

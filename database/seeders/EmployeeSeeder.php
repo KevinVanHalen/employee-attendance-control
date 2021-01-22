@@ -19,7 +19,7 @@ class EmployeeSeeder extends Seeder
             'last_name_1' => 'Perez',
             'last_name_2' => 'Rodriguez',
             'first_name' => 'Leslie',
-            'password' => Hash::make('contraseña'),
+            'login_key' => '1234',
             'status' => 1,
         ]);
 
@@ -27,7 +27,7 @@ class EmployeeSeeder extends Seeder
             'last_name_1' => 'Morales',
             'last_name_2' => 'Ochoa',
             'first_name' => 'Francisco',
-            'password' => Hash::make('12345678'),
+            'login_key' => '1235',
             'status' => 1,
         ]);
     }

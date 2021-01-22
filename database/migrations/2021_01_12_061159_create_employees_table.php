@@ -18,7 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->string('last_name_1', 70);
             $table->string('last_name_2', 70);
             $table->string('first_name', 70);
-            $table->string('password');
+            $table->string('login_key', 10)->unique();
             $table->boolean('status');
             $table->string('job_title', 100)->nullable();
             $table->timestamps();
