@@ -18,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'AUTH\LoginController@logout');
+
+Route::post('user/login', 'UserController@login');
+
 Route::get('employees', 'EmployeeController@index');
 Route::post('employee/store', 'EmployeeController@store');
 Route::post('employee/update', 'EmployeeController@update');
