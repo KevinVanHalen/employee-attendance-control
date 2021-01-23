@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'name' => 'Kevin Corona',
             'username' => 'admin',
             'email' => 'keviinvanhalen@gmail.com',
-            'password' => '1234'
+            'password' => '214365'
         ]);
     }
 }

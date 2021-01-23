@@ -10,6 +10,28 @@ use Illuminate\Support\Facades\DB;
 
 class AttendanceController extends Controller
 {
+    public function index()
+    {
+        $attendances = Attendance::all()->reverse();
+
+        $array = array();
+        foreach($attendances as $attendance) {
+            $object = new \stdClass;
+            $object->id = $attendance->id;
+            $object->date = $attendance->date;
+            $object->entrance_hour = $attendance->entrance_hour;
+            $object->exit_hour = $attendance->exit_hour;
+            $object->employee = $attendance->employee->first_name . ' ' . $attendance->employee->last_name_1 . ' ' . $attendance->employee->last_name_2;
+            array_push($array, $object);
+        }
+
+        return response()->json([
+            "status" => "ok",
+            "message" => "Registros obtenidos con exito",
+            "asistencias" => $array
+        ], 200);
+    }
+
     public function checkInOut(Request $request)
     {
         $exito = true;
@@ -204,7 +226,7 @@ class AttendanceController extends Controller
             $exito = false;
             return response()->json([
                 "status" => "error",
-                "message" => "Error al eliminar registro de asistencia",
+                "message" => "Error al eliminar registro de|     asistencia",
                 "error" => $th
             ], 500);
         }

@@ -18,7 +18,7 @@ class EmployeeSeeder extends Seeder
         DB::table('employees')->insert([
             'last_name_1' => 'Perez',
             'last_name_2' => 'Rodriguez',
-            'first_name' => 'Leslie',
+            'first_name' => 'Maria',
             'login_key' => '1234',
             'status' => 1,
         ]);

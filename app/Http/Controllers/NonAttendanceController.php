@@ -9,6 +9,28 @@ use Illuminate\Support\Facades\DB;
 
 class NonAttendanceController extends Controller
 {
+    public function index()
+    {
+        $non_attendances = NonAttendance::all()->reverse();
+
+        $array = array();
+        foreach($non_attendances as $non_attendance) {
+            $object = new \stdClass;
+            $object->id = $non_attendance->id;
+            $object->date = $non_attendance->date;
+            $object->justified = $non_attendance->justified ? "Si" : "No";
+            $object->reason = $non_attendance->reason;
+            $object->employee = $non_attendance->employee->first_name . ' ' . $non_attendance->employee->last_name_1 . ' ' . $non_attendance->employee->last_name_2;
+            array_push($array, $object);
+        }
+
+        return response()->json([
+            "status" => "ok",
+            "message" => "Registros obtenidos con exito",
+            "inasistencias" => $array
+        ], 200);
+    }
+
     public function getNonAttendacesEmployee($id)
     {
         $employee = Employee::find($id);

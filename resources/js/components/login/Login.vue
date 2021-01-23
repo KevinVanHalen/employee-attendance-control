@@ -1,10 +1,10 @@
 <template>
     <div class="mt-16">
-        <div class="text-center mb-6">
+        <div class="text-center mb-12">
             <p class="titulo">CONTROL DE ASISTENCIA</p>
         </div>
-        <v-card class="mx-auto" max-width="400">
-            <v-card-title>
+        <v-card elevation="17" class="mx-auto" max-width="400">
+            <v-card-title class="fondo_login white--text">
                 <v-spacer></v-spacer>
                     <div>
                         <span>INICIAR SESIÓN</span>
@@ -38,6 +38,7 @@
                                 :disabled="!valid"
                                 @click.prevent="login"
                                 class="mb-10"
+                                color="#EE6A82"
                             >
                                 Entrar
                             </v-btn>
@@ -58,14 +59,14 @@ export default {
         return {
             valid: true,
             form: {
-                email: 'admin',
-                password: '1234',
+                email: '',
+                password: '',
             },
             userRules: [
-                v => !!v || 'El nombre de usuario es requerido'
+                v => !!v || 'El usuario es obligatorio'
             ],
             passwordRules: [
-                v => !!v || 'La contraseña es requerida'
+                v => !!v || 'La contraseña es obligatoria'
             ],
         }
     },

@@ -15,14 +15,25 @@ class NonAttendanceSeeder extends Seeder
     public function run()
     {
         DB::table('non_attendances')->insert([
-            'date' => '2020-01-07',
+            'date' => '2021-01-07',
             'justified' => 1,
             'reason' => 'Enfermedad',
             'employee_id' => 1,
         ]);
         DB::table('non_attendances')->insert([
-            'date' => '2020-01-08',
+            'date' => '2021-01-08',
             'justified' => 0,
+            'employee_id' => 2,
+        ]);
+        DB::table('non_attendances')->insert([
+            'date' => '2021-01-14',
+            'justified' => 0,
+            'employee_id' => 1,
+        ]);
+        DB::table('non_attendances')->insert([
+            'date' => '2021-01-15',
+            'justified' => 1,
+            'reason' => 'Asunto personal',
             'employee_id' => 2,
         ]);
     }

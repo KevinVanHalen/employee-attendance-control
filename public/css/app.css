@@ -73,7 +73,7 @@ body {
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #f8fafc;
+  background-color: #1F3C65;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -511,7 +511,7 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #f8fafc;
+  background-color: #1F3C65;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   max-width: 100%;
@@ -4257,15 +4257,15 @@ input[type=button].btn-block {
 }
 
 .custom-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #1F3C65, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 
 .custom-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #1F3C65, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 
 .custom-range:focus::-ms-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #1F3C65, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 
 .custom-range::-moz-focus-outer {
@@ -4468,8 +4468,8 @@ input[type=button].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #f8fafc;
-  border-color: #dee2e6 #dee2e6 #f8fafc;
+  background-color: #1F3C65;
+  border-color: #dee2e6 #dee2e6 #1F3C65;
 }
 
 .nav-tabs .dropdown-menu {
@@ -10950,6 +10950,44 @@ a.text-dark:focus {
   font-size: 30px;
   text-transform: uppercase;
   margin-bottom: 5px;
+}
+
+.my-text {
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: #013154;
+}
+
+.boton-principal-top {
+  margin-top: 40px;
+}
+
+.border-asistencias {
+  border-bottom: 2px dotted #503F3F;
+}
+
+.titulo {
+  color: #503F3F;
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+.color-bg {
+  background-color: #626569;
+}
+
+.fondo_login {
+  background-color: #084A77;
+}
+
+.noline {
+  text-decoration: none !important;
+}
+
+.noline a {
+  text-decoration: none;
 }
 
 
