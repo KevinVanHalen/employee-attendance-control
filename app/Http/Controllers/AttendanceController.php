@@ -41,12 +41,34 @@ class AttendanceController extends Controller
         
         try {
             $today = Carbon::now();
-            $employee = Employee::where('login_key', $request->login_key)->first();
+            // $exist = Employee::where('login_key', $request->login_key)->exists();
+            $name = $request->first_name;
+            $exist = Employee::where('first_name', $name)->exists();
+
+            // SI no existe el empleado
+            if (!$exist) {
+                return response()->json([
+                    "status" => "no-content",
+                    "message" => "Usuario no encontrado"
+                ], 200);
+            }
+            // $employee = Employee::where('login_key', $request->login_key)->first();
+            $employee = Employee::where('first_name', $name)->first();
             $last_check = $employee->attendances->last();
 
             // Verificar que haya un ultimo registro, si no lo hay es porque es el primer registro de asistencia del empleado en la historia
             if ($last_check) {
                 
+                $difference_last_check = $today->diffInMinutes($last_check->updated_at);
+
+                // En caso de que realizar un check in/out recientemente
+                if ($difference_last_check < 1) {
+                    return response()->json([
+                        "status" => "recent",
+                        "message" => "Hola " . $employee->first_name . " " . $employee->last_name_1 . ". Advertencia, acabas de realizar un registro recientemente"
+                    ], 200);
+                }
+
                 // Verificar que en el ultimo registro se haya echo check in y check out
                 if ($last_check->check_in && $last_check->check_out) {
                     // Si es correcto, generara un nuevo registro (nuevo dia de trabajo)
@@ -136,7 +158,7 @@ class AttendanceController extends Controller
             $exito = false;
             return response()->json([
                 "status" => "error",
-                "message" => "Error al realizar check in/out",
+                "message" => "Error al realizar registros. Verifique su conexión a internet e intente de nuevo por favor.",
                 "error" => $th
             ], 200);
         }
@@ -145,14 +167,14 @@ class AttendanceController extends Controller
             if ($check_in) {
                 return response()->json([
                     "status" => "ok",
-                    "message" => "Check in realizado correctamente",
+                    "message" => "Hola " . $employee->first_name . " " . $employee->last_name_1 . ". Check in realizado correctamente",
                     "check_in" => $attendance,
                     "employee" => $employee
                 ], 200);
             } else {
                 return response()->json([
                     "status" => "ok",
-                    "message" => "Check out realizado correctamente",
+                    "message" => "Hola " . $employee->first_name . " " . $employee->last_name_1 . ". Check out realizado correctamente",
                     "check_out" => $last_check,
                     "employee" => $employee
                 ], 200);
